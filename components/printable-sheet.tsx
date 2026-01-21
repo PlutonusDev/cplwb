@@ -45,13 +45,9 @@ export function PrintableSheet({ questions, title = "CPL Weight & Balance Questi
               {/* Working Space */}
               <div className="mt-4">
                 <h3 className="mb-2 text-sm font-semibold text-gray-700 uppercase tracking-wide">Working Space:</h3>
-                <div className="h-48 rounded border-2 border-dashed border-gray-400 bg-white" />
+                <div className="h-86 rounded border-2 border-dashed border-gray-400 bg-white" />
               </div>
             </div>
-            
-            <footer className="pt-4 text-center text-xs text-gray-500 border-t border-gray-300 mt-4">
-              Page {index * 2 + 1} of {questions.length * 2}
-            </footer>
           </div>
           
           {/* Answer Page */}
@@ -92,10 +88,6 @@ export function PrintableSheet({ questions, title = "CPL Weight & Balance Questi
                 </div>
               </div>
             </div>
-            
-            <footer className="pt-4 text-center text-xs text-gray-500 border-t border-gray-300 mt-4">
-              Page {index * 2 + 2} of {questions.length * 2}
-            </footer>
           </div>
         </div>
       ))}
