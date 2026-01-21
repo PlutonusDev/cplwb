@@ -64,8 +64,8 @@ export default function CPLFlightPlanningApp() {
                   <p><strong>Moment Index:</strong> Weight × Arm ÷ 10,000</p>
                   <p><strong>CG Position:</strong> Total Moment Index × 10,000 ÷ Total Weight</p>
                   <p><strong>%MAC:</strong> (CG - MAC Leading Edge) ÷ MAC Length × 100</p>
-                  <p><strong>Ballast:</strong> Weight × (Target CG - Current CG) ÷ (Ballast Arm - Target CG)</p>
-                  <p><strong>Fuel (AVGAS):</strong> Gallons × 3.785 L/gal × 0.72 kg/L</p>
+                  <p><strong>Add Weight:</strong> Weight × (Target CG - Current CG) ÷ (Ballast Arm - Target CG)</p>
+                  <p><strong>Fuel (AVGAS):</strong> USgal × 2.72 = kg | Lt × 0.72 = kg | USgal × 3.8 = Lt</p>
                 </div>
               </div>
             </div>
@@ -138,7 +138,7 @@ function WeightBalanceCalculator() {
               {rows.map((row, index) => (
                 <tr key={row.name}>
                   <td className="py-2">{row.name}</td>
-                  <td className="py-2">
+                  <td className="py-2 flex justify-end">
                     <input
                       type="number"
                       value={row.weight}
@@ -147,7 +147,7 @@ function WeightBalanceCalculator() {
                       placeholder="0"
                     />
                   </td>
-                  <td className="py-2">
+                  <td className="py-2 flex justify-end">
                     <input
                       type="number"
                       value={row.arm}
@@ -156,7 +156,7 @@ function WeightBalanceCalculator() {
                       placeholder="0"
                     />
                   </td>
-                  <td className="py-2 text-right font-mono">
+                  <td className="py-2 text-right font-mono justify-end">
                     {row.index || "—"}
                   </td>
                 </tr>

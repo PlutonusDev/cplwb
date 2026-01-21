@@ -101,13 +101,13 @@ export function AircraftReference() {
             <div className="flex justify-between">
               <dt className="text-muted-foreground">Main Tanks (L+R)</dt>
               <dd className="font-medium">
-                {ECHO_CONFIG.fuel.mainTankGal * 2} gal @ {ECHO_CONFIG.arms.mainTanks} mm
+                {ECHO_CONFIG.fuel.mainTankGal * 2} USgal @ {ECHO_CONFIG.arms.mainTanks} mm
               </dd>
             </div>
             <div className="flex justify-between">
               <dt className="text-muted-foreground">Auxiliary Tanks (L+R)</dt>
               <dd className="font-medium">
-                {ECHO_CONFIG.fuel.auxTankGal * 2} gal @ {ECHO_CONFIG.arms.auxTanks} mm
+                {ECHO_CONFIG.fuel.auxTankGal * 2} USgal @ {ECHO_CONFIG.arms.auxTanks} mm
               </dd>
             </div>
             <div className="flex justify-between">
@@ -166,6 +166,16 @@ export function AircraftReference() {
                   <td className="py-2">Rear Compartment</td>
                   <td className="py-2 text-right">{ECHO_CONFIG.arms.rearCompt}</td>
                   <td className="py-2 text-right">{ECHO_CONFIG.maxLoads.rearCompt} KG</td>
+                </tr>
+                <tr>
+                  <td className="py-2">Main Tanks (L+R)</td>
+                  <td className="py-2 text-right">{ECHO_CONFIG.arms.mainTanks}</td>
+                  <td className="py-2 text-right">{ECHO_CONFIG.maxLoads.mainTanks} USgal each</td>
+                </tr>
+                <tr>
+                  <td className="py-2">Auxiliary Tanks (L+R)</td>
+                  <td className="py-2 text-right">{ECHO_CONFIG.arms.auxTanks}</td>
+                  <td className="py-2 text-right">{ECHO_CONFIG.maxLoads.auxTanks} USgal each</td>
                 </tr>
               </tbody>
             </table>

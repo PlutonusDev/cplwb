@@ -54,6 +54,8 @@ export const ECHO_CONFIG = {
     rightWingCompt: 55,
     rearCompt: 155,
     seatArea: 82, // if seat removed
+    mainTanks: 50, // each
+    auxTanks: 40, // each
   },
   
   // Fuel capacity
