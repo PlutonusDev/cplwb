@@ -45,10 +45,6 @@ export function PrintableSheet({ questions, title = "CPL Weight & Balance Questi
                 <div className="h-64 rounded border-2 border-dashed border-gray-300 bg-white" />
               </div>
             </div>
-            
-            <footer className="mt-auto pt-6 text-center text-xs text-gray-500">
-              Page {index * 2 + 1} of {questions.length * 2}
-            </footer>
           </div>
           
           {/* Answer Page */}
@@ -90,10 +86,6 @@ export function PrintableSheet({ questions, title = "CPL Weight & Balance Questi
                 </div>
               </div>
             </div>
-            
-            <footer className="mt-auto text-center text-xs text-gray-500">
-              Page {index * 2 + 2} of {questions.length * 2}
-            </footer>
           </div>
         </div>
       ))}
