@@ -128,82 +128,50 @@
 @media print {
   @page {
     size: A4;
-    margin: 10mm 15mm;
-  }
-  
-  * {
-    print-color-adjust: exact !important;
-    -webkit-print-color-adjust: exact !important;
+    margin: 15mm; /* Balanced margins for double-sided printing */
   }
   
   html, body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
     background: white !important;
-    color: black !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 12px !important;
   }
   
-  .print-page {
-    page-break-after: always !important;
-    break-after: page !important;
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
-    box-sizing: border-box;
-    height: 100vh;
-    width: 100%;
-    display: flex !important;
-    flex-direction: column !important;
-    background: white !important;
-    color: black !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-  
-  .print-page:last-of-type {
-    page-break-after: auto !important;
-    break-after: auto !important;
-  }
-  
+  /* Reset the container to ensure no extra spacing */
   .printable-sheet {
-    background: white !important;
-    color: black !important;
+    display: block;
+    margin: 0;
+    padding: 0;
   }
-  
+
+  .print-page {
+    /* Force each page to start fresh */
+    break-before: page;
+    /* Prevent the div from being split across two sheets */
+    page-break-inside: avoid;
+    break-inside: avoid;
+    /* Remove 100vh as it often conflicts with @page margins */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* CRITICAL: Prevents a blank page at the very beginning of the print job */
+  .printable-sheet > div:first-child > .print-page:first-child {
+    break-before: avoid;
+  }
+
   .printable-sheet pre {
-    font-size: 8px !important;
-    line-height: 1.25 !important;
-    background-color: #f0f0f0 !important;
-    padding: 6px !important;
-    border: 1px solid #ccc !important;
-    border-radius: 3px;
-    overflow: hidden !important;
-    white-space: pre-wrap !important;
-    word-break: break-word !important;
-    max-height: none !important;
+    font-size: 9px;
+    line-height: 1.3;
+    background-color: #f5f5f5 !important;
+    padding: 8px;
+    border-radius: 4px;
+    white-space: pre-wrap;
+    word-break: break-word;
   }
   
-  /* Force hide everything with print:hidden */
-  .print\:hidden,
-  [class*="print:hidden"] {
+  nav, .fixed {
     display: none !important;
-    visibility: hidden !important;
-  }
-  
-  /* Hide fixed elements like navigation */
-  .fixed,
-  [class*="fixed"] {
-    display: none !important;
-    position: static !important;
-  }
-  
-  /* Ensure backgrounds print */
-  .bg-gray-100, .bg-gray-200, .bg-gray-50 {
-    background-color: #f0f0f0 !important;
-  }
-  
-  /* Force borders to show */
-  .border, .border-2, .border-dashed {
-    border-color: #666 !important;
   }
 }
