@@ -452,10 +452,10 @@ export function generatePercentMACQuestion(): Question {
   const cgPosition = calculateCG(totals.totalWeight, totals.totalIndex);
   const percentMAC = calculatePercentMAC(cgPosition);
 
-  const tableHeader = `${"=".repeat(65)}\nItem                          | Weight (kg) | Arm (mm) | Mom Index\n${"=".repeat(65)}`;
+  const tableHeader = `${"=".repeat(66)}\nItem                          | Weight (kg) | Arm (mm) | Mom Index\n${"=".repeat(66)}`;
   const tableRows = items.map(item => {
     if (item.name === "Zero Fuel Weight") {
-      return `${"=".repeat(65)}\n${formatTableRow(item.name, item.weight, "", item.momentIndex)}`;
+      return `${"=".repeat(66)}\n${formatTableRow(item.name, item.weight, "", item.momentIndex)}`;
     }
     if (item.name.includes("Aeroplane Basic")) {
       return formatTableRow(item.name, item.weight, "", item.momentIndex);
@@ -476,9 +476,9 @@ export function generatePercentMACQuestion(): Question {
 WEIGHT & BALANCE TABLE:
 ${tableHeader}
 ${tableRows}
-${"=".repeat(65)}
+${"=".repeat(66)}
 ${formatTableRow("TAKE-OFF TOTALS", totals.totalWeight, "", roundTo(totals.totalIndex, 1))}
-${"=".repeat(65)}
+${"=".repeat(66)}
 
 CALCULATIONS:
 1. CG Position:
@@ -506,10 +506,10 @@ export function generateForwardCGLimitQuestion(): Question {
   const forwardLimit = getForwardCGLimit(totals.totalWeight);
   const forwardLimitMAC = calculatePercentMAC(forwardLimit);
 
-  const tableHeader = `${"=".repeat(65)}\nItem                          | Weight (kg) | Arm (mm) | Mom Index\n${"=".repeat(65)}`;
+  const tableHeader = `${"=".repeat(66)}\nItem                          | Weight (kg) | Arm (mm) | Mom Index\n${"=".repeat(66)}`;
   const tableRows = items.map(item => {
     if (item.name === "Zero Fuel Weight") {
-      return `${"=".repeat(65)}\n${formatTableRow(item.name, item.weight, "", item.momentIndex)}`;
+      return `${"=".repeat(66)}\n${formatTableRow(item.name, item.weight, "", item.momentIndex)}`;
     }
     if (item.name.includes("Aeroplane Basic")) {
       return formatTableRow(item.name, item.weight, "", item.momentIndex);
@@ -530,9 +530,9 @@ export function generateForwardCGLimitQuestion(): Question {
 WEIGHT & BALANCE TABLE:
 ${tableHeader}
 ${tableRows}
-${"=".repeat(65)}
+${"=".repeat(66)}
 ${formatTableRow("TAKE-OFF TOTALS", totals.totalWeight, "", roundTo(totals.totalIndex, 1))}
-${"=".repeat(65)}
+${"=".repeat(66)}
 
 CALCULATIONS:
 1. Take-off Weight = ${totals.totalWeight} kg
@@ -580,16 +580,16 @@ export function generateWeightBalanceQuestion(): Question {
   const isLandingWithinLimits = landingWeight <= ECHO_CONFIG.weights.maxLandingWeight &&
     landingCG >= landingForwardLimit && landingCG <= ECHO_CONFIG.cgRange.lightWeight.aft;
 
-  const tableHeader = `${"=".repeat(65)}\nItem                          | Weight (kg) | Arm (mm) | Mom Index\n${"=".repeat(65)}`;
+  const tableHeader = `${"=".repeat(66)}\nItem                          | Weight (kg) | Arm (mm) | Mom Index\n${"=".repeat(66)}`;
   const tableRows = items.map(item => {
     if (item.name === "Zero Fuel Weight") {
-      return `${"=".repeat(65)}\n${formatTableRow(item.name, item.weight, "", item.momentIndex)}`;
+      return `${"=".repeat(66)}\n${formatTableRow(item.name, item.weight, "", item.momentIndex)}`;
     }
     if (item.name.includes("Aeroplane Basic")) {
       return formatTableRow(item.name, item.weight, "", item.momentIndex);
     }
     if (item.name.includes("Burn-off")) {
-      return `${"=".repeat(65)}\n${formatTableRow(item.name, item.weight, item.arm, item.momentIndex)}`;
+      return `${"=".repeat(66)}\n${formatTableRow(item.name, item.weight, item.arm, item.momentIndex)}`;
     }
     return formatTableRow(item.name, item.weight, item.arm, item.momentIndex);
   }).join('\n');
@@ -611,10 +611,10 @@ export function generateWeightBalanceQuestion(): Question {
 WEIGHT & BALANCE TABLE:
 ${tableHeader}
 ${tableRows}
-${"=".repeat(65)}
+${"=".repeat(66)}
 ${formatTableRow("TAKE-OFF TOTALS", towTotals.totalWeight, "", roundTo(towTotals.totalIndex, 1))}
 ${formatTableRow("LANDING TOTALS", landingWeight, "", landingIndex)}
-${"=".repeat(65)}
+${"=".repeat(66)}
 
 TAKE-OFF CHECK:
 Weight: ${towTotals.totalWeight} kg (MTOW: ${ECHO_CONFIG.weights.maxTakeoffWeight} kg) ${towTotals.totalWeight <= ECHO_CONFIG.weights.maxTakeoffWeight ? "OK" : "EXCEEDED"}
@@ -650,7 +650,7 @@ export function generateBallastQuestion(): Question {
   let answer: string;
   let workings: string;
 
-  const tableHeader = `${"=".repeat(65)}\nItem                          | Weight (kg) | Arm (mm) | Mom Index\n${"=".repeat(65)}`;
+  const tableHeader = `${"=".repeat(66)}\nItem                          | Weight (kg) | Arm (mm) | Mom Index\n${"=".repeat(66)}`;
   const tableRows = items.map(item => {
     if (item.name.includes("Aeroplane Basic")) {
       return formatTableRow(item.name, item.weight, "", item.momentIndex);
@@ -672,9 +672,9 @@ export function generateBallastQuestion(): Question {
 INITIAL WEIGHT & BALANCE TABLE:
 ${tableHeader}
 ${tableRows}
-${"=".repeat(65)}
+${"=".repeat(66)}
 ${formatTableRow("TOTALS (no fuel)", totals.totalWeight, "", roundTo(totals.totalIndex, 1))}
-${"=".repeat(65)}
+${"=".repeat(66)}
 
 CALCULATIONS:
 1. Current CG Position:
@@ -711,9 +711,9 @@ ANSWER: Add approximately ${fuelGallons} US gallons (${fuelLitres} lt) of fuel t
 INITIAL WEIGHT & BALANCE TABLE:
 ${tableHeader}
 ${tableRows}
-${"=".repeat(65)}
+${"=".repeat(66)}
 ${formatTableRow("TOTALS (no fuel)", totals.totalWeight, "", roundTo(totals.totalIndex, 1))}
-${"=".repeat(65)}
+${"=".repeat(66)}
 
 CALCULATIONS:
 1. Current CG Position:
