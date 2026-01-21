@@ -124,82 +124,42 @@
   }
 }
 
-/* Print Styles for Question Sheets */
 @media print {
   @page {
     size: A4;
-    margin: 10mm 15mm; /* Balanced margins for double-sided printing */
+    margin: 0; /* Let the component handle padding for better control */
   }
 
-  * {
-    print-color-adjust: exact !important;
-    -webkit-print-color-adjust: exact !important;
-  }
-  
+  /* Reset body for printing */
   html, body {
     background: white !important;
     color: black !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 12px !important;
+    width: 210mm;
+    height: 297mm;
+  }
+
+  /* Ensure the wrapper doesn't break incorrectly */
+  .printable-sheet {
+    display: block !important;
+    background: white !important;
   }
 
   .print-page {
-    page-break-after: always !important;
-    break-after: page !important;
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
+    /* Use 'always' to force the answer to the back, 
+       but ensure the container isn't adding extra breaks */
+    break-after: page;
+    page-break-after: always;
+    
+    /* Standard A4 dimensions to help the browser calculate the flip */
+    height: 297mm; 
+    width: 210mm;
+    overflow: hidden;
+    position: relative;
     box-sizing: border-box;
-    height: 100vh;
-    width: 100%;
-    display: flex !important;
-    flex-direction: column !important;
-    background: white !important;
-    color: black !important;
-    padding: 0 !important;
-    margin: 0 !important;
   }
 
-  .print-page:last-of-type {
-    page-break-after: auto !important;
-    break-after: auto !important;
-  }
-
-  .printable-sheet pre {
-    font-size: 8px !important;
-    line-height: 1.25 !important;
-    background-color: #f0f0f0 !important;
-    padding: 6px !important;
-    border: 1px solid #ccc !important;
-    border-radius: 3px;
-    overflow: hidden !important;
-    white-space: pre-wrap !important;
-    word-break: break-word !important;
-    max-height: none !important;
-  }
-  
-  nav, .fixed {
+  /* Remove fixed/nav elements that might cause overflow */
+  nav, .fixed, footer {
     display: none !important;
-  }
-
-  .print\:hidden,
-  [class*="print:hidden"] {
-    display: none !important;
-    visibility: hidden !important;
-  }
-
-  .fixed,
-  [class*="fixed"] {
-    display: none !important;
-    position: static !important;
-  }
-
-  .bg-gray-100, .bg-gray-200, .bg-gray-50 {
-    background-color: #f0f0f0 !important;
-  }
-  
-  /* Force borders to show */
-  .border, .border-2, .border-dashed {
-    border-color: #666 !important;
   }
 }

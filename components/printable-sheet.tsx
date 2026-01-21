@@ -1,6 +1,7 @@
 "use client";
 
 import type { Question } from "@/lib/question-types";
+import React from "react";
 
 interface PrintableSheetProps {
   questions: Question[];
@@ -11,11 +12,10 @@ export function PrintableSheet({ questions, title = "CPL Weight & Balance Questi
   return (
     <div className="printable-sheet bg-white text-black">
       {questions.map((question, index) => (
-        <div key={`q-${question.id}`}>
+        <React.Fragment key={`q-${question.id}`}>
           {/* Question Page */}
           <div 
-            className="print-page flex flex-col bg-white text-black p-8 min-h-[100vh]"
-            style={{ pageBreakAfter: 'always', breakAfter: 'page' }}
+            className="print-page flex flex-col bg-white text-black p-12"
           >
             <header className="mb-6 border-b-2 border-gray-400 pb-4">
               <h1 className="text-xl font-bold text-black">{title}</h1>
@@ -52,8 +52,7 @@ export function PrintableSheet({ questions, title = "CPL Weight & Balance Questi
           
           {/* Answer Page */}
           <div 
-            className="print-page flex flex-col bg-white text-black p-8 min-h-[100vh]"
-            style={{ pageBreakAfter: 'always', breakAfter: 'page' }}
+            className="print-page flex flex-col bg-white text-black p-12"
           >
             <header className="mb-6 border-b-2 border-gray-400 pb-4">
               <h1 className="text-xl font-bold text-black">{title} - Answers</h1>
@@ -89,7 +88,7 @@ export function PrintableSheet({ questions, title = "CPL Weight & Balance Questi
               </div>
             </div>
           </div>
-        </div>
+        </React.Fragment>
       ))}
     </div>
   );
