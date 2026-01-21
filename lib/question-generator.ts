@@ -601,12 +601,12 @@ export function generateWeightBalanceQuestion(): Question {
     scenario: `Using Loading System ECHO, verify the aircraft loading is within limits. (Weights given in ${units.weightUnit}, fuel in ${units.fuelUnit})`,
     scenarioText,
     loadingTable: items,
-    question: `a) Calculate the Take-off Weight and CG position
-b) Calculate the Landing Weight and CG position  
-c) Is the aircraft within weight and balance limits for the entire flight?`,
-    answer: `a) Take-off Weight: ${towTotals.totalWeight} kg, CG: ${roundTo(towCG, 1)} mm aft of datum
-b) Landing Weight: ${landingWeight} kg, CG: ${roundTo(landingCG, 1)} mm aft of datum
-c) ${isTowWithinLimits && isLandingWithinLimits ? "Yes, within limits" : "No, outside limits"}`,
+    question: `1. Calculate the Take-off Weight and CG position
+2. Calculate the Landing Weight and CG position  
+3. Is the aircraft within weight and balance limits for the entire flight?`,
+    answer: `1. Take-off Weight: ${towTotals.totalWeight} kg, CG: ${roundTo(towCG, 1)} mm aft of datum
+2. Landing Weight: ${landingWeight} kg, CG: ${roundTo(landingCG, 1)} mm aft of datum
+3. ${isTowWithinLimits && isLandingWithinLimits ? "Yes, within limits" : "No, outside limits"}`,
     workings: `
 WEIGHT & BALANCE TABLE:
 ${tableHeader}

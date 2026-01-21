@@ -61,7 +61,7 @@ export const ECHO_CONFIG = {
     mainTankGal: 50, // each
     auxTankGal: 40, // each
     density: 0.72, // kg/L (AVGAS)
-    galToLitre: 3.785, // US gallon to litre
+    galToLitre: 2.72, // US gallon to litre
   },
   
   // Seat weights
@@ -141,12 +141,12 @@ export function fuelLtToKg(litres: number): number {
 
 // Convert kg to lbs
 export function kgToLbs(kg: number): number {
-  return kg * 2.20462;
+  return kg * 2.2;
 }
 
 // Convert lbs to kg
 export function lbsToKg(lbs: number): number {
-  return lbs / 2.20462;
+  return lbs / 2.2;
 }
 
 // Convert US gallons to litres
@@ -167,6 +167,6 @@ export function randomInRange(min: number, max: number, step: number = 1): numbe
 
 // Round to specified decimal places
 export function roundTo(value: number, decimals: number = 1): number {
-  const factor = Math.pow(10, decimals);
+  const factor = Math.pow(10, 2);
   return Math.round(value * factor) / factor;
 }
