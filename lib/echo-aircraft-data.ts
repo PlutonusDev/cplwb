@@ -134,6 +134,31 @@ export function fuelGalToKg(gallons: number): number {
   return gallons * ECHO_CONFIG.fuel.galToLitre * ECHO_CONFIG.fuel.density;
 }
 
+// Convert litres to kg
+export function fuelLtToKg(litres: number): number {
+  return litres * ECHO_CONFIG.fuel.density;
+}
+
+// Convert kg to lbs
+export function kgToLbs(kg: number): number {
+  return kg * 2.20462;
+}
+
+// Convert lbs to kg
+export function lbsToKg(lbs: number): number {
+  return lbs / 2.20462;
+}
+
+// Convert US gallons to litres
+export function galToLt(gallons: number): number {
+  return gallons * ECHO_CONFIG.fuel.galToLitre;
+}
+
+// Convert litres to US gallons
+export function ltToGal(litres: number): number {
+  return litres / ECHO_CONFIG.fuel.galToLitre;
+}
+
 // Random number generator with range
 export function randomInRange(min: number, max: number, step: number = 1): number {
   const steps = Math.floor((max - min) / step);

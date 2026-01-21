@@ -24,12 +24,15 @@ export default function PrintPage() {
   }, []);
 
   const handlePrint = () => {
-    window.print();
+    // Small delay to ensure styles are applied
+    setTimeout(() => {
+      window.print();
+    }, 100);
   };
 
   if (isLoading) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center bg-background">
         <p className="text-muted-foreground">Loading questions...</p>
       </div>
     );
@@ -37,7 +40,7 @@ export default function PrintPage() {
 
   if (questions.length === 0) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-4">
+      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-background">
         <p className="text-muted-foreground">No questions to print. Generate questions first.</p>
         <Button asChild>
           <Link href="/">
@@ -50,9 +53,9 @@ export default function PrintPage() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       {/* Print Controls - Hidden when printing */}
-      <div className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background p-4 print:hidden">
+      <div className="print:hidden fixed left-0 right-0 top-0 z-50 border-b border-border bg-background p-4">
         <div className="mx-auto flex max-w-4xl items-center justify-between">
           <Button variant="outline" asChild>
             <Link href="/">
@@ -60,20 +63,20 @@ export default function PrintPage() {
               Back to Generator
             </Link>
           </Button>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <span className="text-sm text-muted-foreground">
-              {questions.length} question{questions.length !== 1 ? "s" : ""} ready to print
+              {questions.length} question{questions.length !== 1 ? "s" : ""} ({questions.length * 2} pages)
             </span>
-            <Button onClick={handlePrint}>
+            <Button onClick={handlePrint} size="lg">
               <Printer className="mr-2 h-4 w-4" />
-              Print Sheets
+              Print to PDF
             </Button>
           </div>
         </div>
       </div>
       
       {/* Printable Content */}
-      <div className="pt-20 print:pt-0">
+      <div className="pt-20 print:pt-0 bg-white">
         <PrintableSheet questions={questions} />
       </div>
     </div>
